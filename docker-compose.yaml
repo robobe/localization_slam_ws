@@ -6,6 +6,7 @@ services:
     user: "user:user"
     volumes:
       - .:/workspace:cached
+      - ./.gz:/home/user/.gz:rw
       - /tmp/.X11-unix:/tmp/.X11-unix:rw 
       - /dev/dri:/dev/dri 
       - /dev/nvidia0:/dev/nvidia0 
@@ -28,5 +29,3 @@ services:
       - GZ_TRANSPORT_IP=ros
       - GZ_DISCOVERY_SERVER=gazebo
       - GZ_PARTITION=my_simulation
-    devices:
-      - /dev/dri:/dev/dri
