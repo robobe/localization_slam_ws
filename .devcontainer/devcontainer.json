@@ -1,0 +1,23 @@
+{
+    "name": "localization_slam",
+    "dockerComposeFile": "../docker-compose.yaml",
+    "service": "ros",
+    "shutdownAction": "stopCompose",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+            "ms-python.python",
+            "ms-vscode.cpptools",
+            "redhat.vscode-xml",
+            "redhat.vscode-yaml",
+            "albert.tabout",
+            "actboy168.tasks",
+            "streetsidesoftware.code-spell-checker",
+            "dlech.chmod",
+            "smilerobotics.urdf"
+        ],
+        "settings": {}
+      }
+    }
+  }
