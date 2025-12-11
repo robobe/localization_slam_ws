@@ -1,0 +1,38 @@
+launch:
+  - arg:
+      name: "robot_description_file"
+      default: "$(find-pkg-share bumperbot_description)/urdf/bumperbot.urdf.xacro"
+  - arg:
+      name: "bridge_config_file"
+      default: "$(find-pkg-share bumperbot_bringup)/config/bridge.yaml"
+
+  - executable:
+      cmd: gz sim -v 4 -r empty.sdf
+
+  - node:
+      pkg: "robot_state_publisher"
+      exec: "robot_state_publisher"
+      name: "robot_state_publisher"
+      param:
+        - name: "robot_description"
+          value : "$(command '$(find-exec xacro) $(var robot_description_file)')"
+  - node:
+      pkg: "joint_state_publisher_gui"
+      exec: "joint_state_publisher_gui"
+      name: "joint_state_publisher_gui"
+      output: screen
+
+  - node:
+      pkg: "ros_gz_sim"
+      exec: "create"
+      output: screen
+      args:
+          "-topic robot_description -name bumperbot"
+
+  - node:
+      pkg: "ros_gz_bridge"
+      exec: "parameter_bridge"
+      output: screen
+      args:
+          "--ros-args -p config_file:=$(var bridge_config_file)"
+  

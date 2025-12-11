@@ -4,7 +4,7 @@ source install/setup.bash
 echo '🐢 Environment ready!'
 # bash key bindings
 # replace bringup with full bringup name
-bind '"\C-b": "ros2 launch <bringup>"'
+bind '"\C-b": "ros2 launch bumperbot_bringup"'
 
 # Function to get git branch
 parse_git_branch() {
